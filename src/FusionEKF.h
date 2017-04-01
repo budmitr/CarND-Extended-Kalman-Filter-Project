@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <cmath>
 #include "kalman_filter.h"
 #include "tools.h"
 
@@ -44,6 +45,16 @@ private:
   Eigen::MatrixXd R_radar_;
   Eigen::MatrixXd H_laser_;
   Eigen::MatrixXd Hj_;
+
+  // process noise
+  double noise_ax;
+  double noise_ay;
+
+  // Kalman process functions
+  void Initialize(const MeasurementPackage &measurement_pack);
+  void Predict(const MeasurementPackage &measurement_pack);
+  void UpdateLaser(const MeasurementPackage &measurement_pack);
+  void UpdateRadar(const MeasurementPackage &measurement_pack);
 };
 
 #endif /* FusionEKF_H_ */

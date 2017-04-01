@@ -6,3 +6,7 @@ build/
 
 # editor config
 .vscode/
+.idea/
+
+# runtime data
+data/output.txt
